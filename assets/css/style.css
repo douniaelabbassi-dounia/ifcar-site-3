@@ -143,16 +143,16 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 .mobile__cta { margin-top: auto; display: grid; gap: 12px; padding-top: 28px; }
 
 /* ---------- Hero ---------- */
-.hero { padding-top: 150px; padding-bottom: clamp(40px,6vw,80px); position: relative; }
-.hero__top { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 30px; }
-.hero h1 { font-size: clamp(2.7rem, 8vw, 6rem); font-weight: 600; letter-spacing: -.02em; }
+.hero { padding-top: 124px; padding-bottom: clamp(26px,3.5vw,48px); position: relative; }
+.hero__top { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 16px; }
+.hero h1 { font-size: clamp(2.3rem, 5.8vw, 4.5rem); font-weight: 600; letter-spacing: -.02em; }
 .hero h1 .row2 { display: inline-flex; align-items: center; gap: .25em; flex-wrap: wrap; }
 /* rotating word */
 .rotor { display: inline-grid; vertical-align: bottom; height: 1.05em; overflow: hidden; color: var(--green-ink); font-style: normal; }
 .rotor span { grid-area: 1/1; transform: translateY(110%); opacity: 0; transition: transform .6s var(--ease), opacity .6s; }
 .rotor span.in { transform: translateY(0); opacity: 1; }
 .rotor span.out { transform: translateY(-110%); opacity: 0; }
-.hero__sub { display: grid; gap: 30px; align-items: end; margin-top: 36px; }
+.hero__sub { display: grid; gap: 30px; align-items: end; margin-top: 20px; }
 @media (min-width:900px){ .hero__sub { grid-template-columns: 1.2fr 1fr; } }
 .hero__sub p { font-size: clamp(1.05rem,1.5vw,1.22rem); color: var(--ink-2); max-width: 520px; }
 .hero__media { margin-top: 46px; position: relative; border-radius: var(--r-xl); overflow: hidden; border: 1px solid var(--line); }
@@ -338,7 +338,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 .footer__grid { display: grid; gap: 44px; grid-template-columns: 1.6fr 1fr 1fr 1.2fr; }
 @media (max-width:900px){ .footer__grid{ grid-template-columns: 1fr 1fr; } }
 @media (max-width:560px){ .footer__grid{ grid-template-columns: 1fr; } }
-.footer__brand img { height: 64px; margin-bottom: 20px; }
+.footer__brand img { height: 76px; background: #fff; padding: 14px 20px; border-radius: 16px; margin-bottom: 20px; box-shadow: 0 8px 24px -12px rgba(0,0,0,.4); }
 .footer__brand p { font-size: .95rem; max-width: 320px; }
 .footer h5 { font-family: var(--font-display); font-style: normal; color: var(--paper); font-size: 1.1rem; margin-bottom: 18px; }
 .footer ul { display: grid; gap: 11px; }
@@ -375,3 +375,42 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 @media (max-width:560px){ .float-cta{ right:16px; bottom:16px; } }
 .tag-i { display:inline-flex; align-items:center; gap:8px; padding:7px 15px; border-radius:var(--pill); background:var(--green-soft); color:var(--green-ink); font-weight:700; font-size:.8rem; }
 .feature-row { display:grid; gap:20px; } @media(min-width:760px){ .feature-row{ grid-template-columns:repeat(3,1fr);} }
+
+/* ===== Références — bande unique multi-secteurs (hero) ===== */
+.hero__sub--solo { display: block; }
+.hero__sub--solo p { max-width: 660px; }
+.refstrip { margin-top: clamp(18px, 2.6vw, 30px); }
+.refstrip__head { display: flex; align-items: center; gap: 18px 22px; flex-wrap: wrap; margin-bottom: 20px; }
+.rf-legend { display: flex; flex-wrap: wrap; gap: 10px; }
+.rf-tag { font-family: var(--font-body); font-weight: 700; font-size: .78rem; letter-spacing: .01em; padding: 7px 14px 7px 28px; border-radius: var(--pill); position: relative; }
+.rf-tag::before { content: ""; position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 9px; height: 9px; border-radius: 50%; }
+.rf-tag.g { background: var(--green-soft); color: var(--green-ink); } .rf-tag.g::before { background: var(--green); }
+.rf-tag.b { background: var(--blue-soft); color: var(--blue-ink); } .rf-tag.b::before { background: var(--blue); }
+.rf-tag.k { background: #eceadf; color: var(--ink); } .rf-tag.k::before { background: var(--ink); }
+
+.refstrip__line { overflow: hidden; border-block: 1px solid var(--line); padding: 16px 0;
+  -webkit-mask: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); mask: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+.refstrip__track { display: flex; width: max-content; animation: tick 48s linear infinite; }
+.refstrip__line:hover .refstrip__track { animation-play-state: paused; }
+.refstrip__seq { display: flex; align-items: center; gap: 14px; padding-right: 14px; }
+
+.rf-name { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; white-space: nowrap; padding-right: 4px; flex-shrink: 0; }
+.refstrip__seq .rf-name.g { color: var(--green-ink); }
+.refstrip__seq .rf-name.b { color: var(--blue-ink); }
+.refstrip__seq .rf-name.k { color: var(--ink); }
+
+.rf-chip { height: 70px; min-width: 152px; flex-shrink: 0; display: grid; place-items: center; padding: 0 24px;
+  background: var(--white); border: 1px solid var(--line); border-bottom-width: 3px; border-radius: var(--r); }
+.rf-chip img { height: 36px; width: auto; filter: grayscale(1); opacity: .6; transition: .4s var(--ease); }
+.rf-chip:hover img { filter: none; opacity: 1; }
+.rf-chip.g { border-bottom-color: var(--green); }
+.rf-chip.b { border-bottom-color: var(--blue); }
+.rf-chip.k { border-bottom-color: var(--ink); }
+
+/* séparateur créatif : losange dégradé vert→bleu entre deux traits */
+.rf-div { position: relative; width: 52px; height: 26px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.rf-div::before, .rf-div::after { content: ""; position: absolute; top: 50%; transform: translateY(-50%); width: 15px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, var(--green), var(--blue)); }
+.rf-div::before { left: 0; } .rf-div::after { right: 0; }
+.rf-div span { width: 12px; height: 12px; border-radius: 3px; transform: rotate(45deg); background: linear-gradient(135deg, var(--green), var(--blue)); box-shadow: 0 0 0 4px rgba(149,206,10,.12); }
+
+@media (max-width: 560px){ .rf-name { font-size: .95rem; } .rf-chip { min-width: 132px; height: 62px; } .rf-chip img { height: 30px; } }
