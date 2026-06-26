@@ -74,6 +74,28 @@
     rotor.textContent = words[0] || "";
   }
 
+  /* ---- Hero : rotation des messages (bloc défilant) ---- */
+  const hrotor = document.querySelector(".hero__rotor");
+  if (hrotor) {
+    const slides = Array.from(hrotor.querySelectorAll(".hslide"));
+    const dots = Array.from(document.querySelectorAll(".hero__dots button"));
+    if (slides.length > 1 && !rm) {
+      let i = 0;
+      const interval = parseInt(hrotor.dataset.interval || "4200", 10);
+      const go = (n) => {
+        slides[i].classList.remove("is-active");
+        if (dots[i]) dots[i].classList.remove("is-active");
+        i = (n + slides.length) % slides.length;
+        slides[i].classList.add("is-active");
+        if (dots[i]) dots[i].classList.add("is-active");
+      };
+      let timer = setInterval(() => go(i + 1), interval);
+      dots.forEach((d, idx) => d.addEventListener("click", () => {
+        clearInterval(timer); go(idx); timer = setInterval(() => go(i + 1), interval);
+      }));
+    }
+  }
+
   /* ---- Accordions ---- */
   document.querySelectorAll(".acc").forEach((acc) => {
     const single = acc.dataset.single === "true";
