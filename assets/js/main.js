@@ -83,11 +83,12 @@
       let i = 0;
       const interval = parseInt(hrotor.dataset.interval || "4200", 10);
       const go = (n) => {
-        slides[i].classList.remove("is-active");
+        slides[i].classList.remove("is-active");      // l'ancien message disparaît d'abord
         if (dots[i]) dots[i].classList.remove("is-active");
-        i = (n + slides.length) % slides.length;
-        slides[i].classList.add("is-active");
+        const next = (n + slides.length) % slides.length;
+        i = next;
         if (dots[i]) dots[i].classList.add("is-active");
+        setTimeout(() => slides[next].classList.add("is-active"), 480); // puis le suivant apparaît
       };
       let timer = setInterval(() => go(i + 1), interval);
       dots.forEach((d, idx) => d.addEventListener("click", () => {
